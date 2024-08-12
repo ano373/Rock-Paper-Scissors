@@ -2,7 +2,8 @@ let humanScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
-  const random = Math.floor(Math.random() * 3);
+  const random = Math.floor(Math.random() * 3 + 1)%3;
+  console.log(random);
   switch(random) {
     case 0:
     return "Rock";
@@ -25,6 +26,7 @@ buttons.forEach((button) => {
         
         const buttonCon = document.querySelector(".button-container");
         buttonCon.insertAdjacentElement('afterend', div);
+        div.style. fontSize= "60px";
         div.textContent= "computer: "+ computerScore + " human: " + humanScore;
     });
     });
