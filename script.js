@@ -6,59 +6,68 @@ function getComputerChoice() {
   switch(random) {
     case 0:
     return "Rock";
-      break;
     case 1:
     return "Paper";
-      break;
     case 2:
     return "Scissors";
-      break;
   }
 }
+const div = document.createElement("div");
 
-function getHumanChoice(){
-  const input = prompt("Choose between Rock Paper Scissor").trim().toLowerCase();
-  return input.charAt(0).toUpperCase() + input.slice(1);
-}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", function(e)  {
+        humanChoice = e.target.className;
+        computerChoice = getComputerChoice();
+        playRound(humanChoice,computerChoice);
+        
+        
+        const buttonCon = document.querySelector(".button-container");
+        buttonCon.insertAdjacentElement('afterend', div);
+        div.textContent= "computer: "+ computerScore + " human: " + humanScore;
+    });
+    });
+
+
+
+
+
 
 function playRound(humanChoice, computerChoice) {
   if(humanChoice === computerChoice) {
     alert("Tie");
   } 
-  else if (humanChoice == "Scissors") {
+  else if (humanChoice == "scissors") {
     if (computerChoice == "Rock") {
-      alert("Computer won");
       computerScore++;
     } else {
-      alert("Human won");
       humanScore++;
     }
   }
-  else if (humanChoice == "Paper") {
+  else if (humanChoice == "paper") {
     if (computerChoice == "Scissors") {
-      alert("Computer won");
       computerScore++;
     } else {
-      alert("Human won");
       humanScore++;
     }
   }
-  else if (humanChoice == "Rock") {
+  else if (humanChoice == "rock") {
     if (computerChoice == "Paper") {
-      alert("Computer won");
       computerScore++;
     } else {
-      alert("Human won");
       humanScore++;
     } 
   }
   
 }
 
+
 function playGame() {
  
 }
 
-playGame();
+
+
 
 alert(`Human score is ${humanScore} and Computer score is ${computerScore}`);
